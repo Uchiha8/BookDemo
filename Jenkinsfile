@@ -37,16 +37,13 @@ pipeline {
         }
     }
 
-    // post {
-    //     success {
-    //         // Archive and publish JaCoCo code coverage reports
-    //         step([$class: 'JacocoPublisher', changeBuildStatus: true, execPattern: '**/target/jacoco.exec'])
+    post {
+        always {
+            // Archive and publish JaCoCo code coverage reports
+            step([$class: 'JacocoPublisher', changeBuildStatus: true, execPattern: '**/target/jacoco.exec'])
 
-    //         // Additional actions to perform on build success
-    //     }
-    //     failure {
-    //         // Actions to perform on build failure
-    //     }
-    // }
+            // Additional actions to perform on build success
+        }
+    }
 }
 
