@@ -31,7 +31,7 @@ pipeline {
                 // Configure SonarQube Scanner (you must install it on your Jenkins server)
                 withSonarQubeEnv('sonarqube13') {
                     // Run SonarQube analysis
-                    sh 'mvn sonar:sonar'
+                    bat 'mvn sonar:sonar'
                 }
             }
         }
