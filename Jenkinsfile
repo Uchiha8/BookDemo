@@ -9,14 +9,12 @@ pipeline {
                 checkout scm
             }
         }
-      stage('Build') {
+     stage('Build and Test') {
             steps {
+                // Build your project using Maven
                 sh 'mvn clean install'
-            }
-        }
 
-        stage('Test') {
-            steps {
+                // Run unit tests (if applicable)
                 sh 'mvn test'
             }
         }
