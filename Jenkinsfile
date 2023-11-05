@@ -9,14 +9,21 @@ pipeline {
                 checkout scm
             }
         }
-     stage('Build and Test') {
-            steps {
-                // Build your project using Maven
-                sh 'mvn clean install'
+     // stage('Build and Test') {
+     //        steps {
+     //            // Build your project using Maven
+     //            sh 'mvn clean install'
 
-                // Run unit tests (if applicable)
-                sh 'mvn test'
-            }
+     //            // Run unit tests (if applicable)
+     //            sh 'mvn test'
+     //        }
+     //    }
+
+        stage('Test') {
+            steps { bat 'mvn test' }
+        }
+        stage('Build') {
+            steps { bat 'mvn clean install' }
         }
 
         stage('Code Analysis') {
