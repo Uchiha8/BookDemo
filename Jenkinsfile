@@ -9,16 +9,6 @@ pipeline {
                 checkout scm
             }
         }
-     // stage('Build and Test') {
-     //        steps {
-     //            // Build your project using Maven
-     //            sh 'mvn clean install'
-
-     //            // Run unit tests (if applicable)
-     //            sh 'mvn test'
-     //        }
-     //    }
-
         stage('Test') {
             steps { bat 'mvn test' }
         }
@@ -28,9 +18,7 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
-                // Configure SonarQube Scanner (you must install it on your Jenkins server)
                 withSonarQubeEnv('sonarqube13') {
-                    // Run SonarQube analysis
                     bat 'mvn sonar:sonar'
                 }
             }
@@ -39,10 +27,7 @@ pipeline {
 
     post {
         always {
-            // Archive and publish JaCoCo code coverage reports
             step([$class: 'JacocoPublisher', changeBuildStatus: true, execPattern: '**/target/jacoco.exec'])
-
-            // Additional actions to perform on build success
         }
     }
 }
