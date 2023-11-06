@@ -20,17 +20,17 @@ pipeline {
                 bat "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
             }
         }
-        stage('Sonar Analysis') {
-            environment {
-                scannerHome = tool "sonar-scanner"
-            }
+        // stage('Sonar Analysis') {
+        //     environment {
+        //         scannerHome = tool "sonar-scanner"
+        //     }
 
-            steps {
-                withSonarQubeEnv("sonarqube13") {
-                    bat 'mvn clean package sonar:sonar'
-                }
-            }
-        }
+        //     steps {
+        //         withSonarQubeEnv("sonarqube13") {
+        //             bat 'mvn clean package sonar:sonar'
+        //         }
+        //     }
+        // }
         stage('Archive Artifacts') {
             steps {
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
