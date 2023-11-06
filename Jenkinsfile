@@ -9,13 +9,12 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Build') {
+                    steps { bat 'mvn clean install' }
+                }
         stage('Test') {
             steps { bat 'mvn test' }
         }
-        stage('Build') {
-            steps { bat 'mvn clean install' }
-        }
-
         stage('Code Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube13') {
