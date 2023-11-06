@@ -23,7 +23,7 @@ pipeline {
        stage('Scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube13'){
-                    bat 'mvn clean package sonar:sonar'
+                    bat 'mvn clean sonar:sonar'
                 }
             }
         }
