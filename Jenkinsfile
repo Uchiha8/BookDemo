@@ -32,6 +32,11 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
         }
+        stage('Deploy') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-admin', path: '', url: 'http://localhost:8181/')], contextPath: 'BookDemo', onFailure: false, war: '**/*.war'
+            }
+        }
     }
 
     post {
