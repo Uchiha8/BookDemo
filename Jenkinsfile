@@ -27,6 +27,11 @@ pipeline {
                 }
             }
         }
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+            }
+        }
     }
 
     post {
