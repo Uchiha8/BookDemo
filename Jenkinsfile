@@ -38,11 +38,5 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            step([$class: 'JacocoPublisher', changeBuildStatus: true, execPattern: '**/target/jacoco.exec'])
-        }
-    }
 }
 
