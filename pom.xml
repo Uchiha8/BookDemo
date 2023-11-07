@@ -47,6 +47,12 @@
     	    <artifactId>jacoco-maven-plugin</artifactId>
     	    <version>0.8.6</version>
 	</dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.2</version> <!-- Use the appropriate version -->
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -75,4 +81,5 @@
         </plugin>
         </plugins>
     </build>
+
 </project>

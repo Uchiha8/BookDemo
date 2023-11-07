@@ -19,17 +19,16 @@ public class BookService {
     }
 
     public Book update(Long id, Book book) {
-        Book update_book = bookRepository.getBookById(id);
+        Book update_book = bookRepository.findBookById(id);
         update_book.setName(book.getName());
         update_book.setAuthor(book.getAuthor());
         update_book.setDescription(book.getDescription());
-        update_book.setId(book.getId());
         bookRepository.save(update_book);
         return update_book;
     }
 
     public Book getById(Long id) {
-        return bookRepository.getBookById(id);
+        return bookRepository.findBookById(id);
     }
 
     public List<Book> getAll() {

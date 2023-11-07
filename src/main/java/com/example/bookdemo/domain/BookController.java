@@ -19,13 +19,13 @@ public class BookController {
         return ResponseEntity.ok(bookService.save(book));
     }
 
-    @PutMapping("/updateBook/id")
-    public ResponseEntity<Book> update(@RequestParam Long id, @RequestBody Book book) {
+    @PutMapping("/updateBook/{id}")
+    public ResponseEntity<Book> update(@PathVariable Long id, @RequestBody Book book) {
         return ResponseEntity.ok(bookService.update(id, book));
     }
 
-    @GetMapping("/readBook/id")
-    public ResponseEntity<Book> read(@RequestParam Long id) {
+    @GetMapping("/readBook/{id}")
+    public ResponseEntity<Book> read(@PathVariable Long id) {
         return ResponseEntity.ok(bookService.getById(id));
     }
 
@@ -35,8 +35,8 @@ public class BookController {
         return ResponseEntity.ok(bookList);
     }
 
-    @DeleteMapping("/delete/id")
-    public ResponseEntity<String> delete(@RequestParam Long id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         bookService.deleteById(id);
         return ResponseEntity.ok("Data has been deleted");
     }

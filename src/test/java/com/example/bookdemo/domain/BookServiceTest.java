@@ -44,21 +44,57 @@ public class BookServiceTest {
 
     @Test
     public void getById() {
+        Long id = 1L;
+        Book book = new Book(id, "Design Pattern", "John Clim", "If you need to improve DP");
+
+        Mockito.when(bookRepository.findBookById(id)).thenReturn(book);
+
+        Book result = bookService.getById(id);
+        assertNotNull(result);
+        assertEquals(id, result.getId());
+        assertEquals("Design Pattern", result.getName());
+        assertEquals("John Clim", result.getAuthor());
+        assertEquals("If you need to improve DP", result.getDescription());
 
     }
 
     @Test
     public void save() {
+        Book bookToSave = new Book(1L, "Design Pattern", "John Clim", "If you need to improve DP");
 
+        Mockito.when(bookRepository.save(bookToSave)).thenReturn(bookToSave);
+
+        Book savedBook = bookService.save(bookToSave);
+        assertNotNull(savedBook);
+        assertEquals(1L, savedBook.getId());
+        assertEquals("Design Pattern", savedBook.getName());
+        assertEquals("John Clim", savedBook.getAuthor());
+        assertEquals("If you need to improve DP", savedBook.getDescription());
     }
 
     @Test
     void update() {
+        Long id = 1L;
+        Book existingBook = new Book(id, "Design Pattern", "John Clim", "If you need to improve DP");
+        Book updatedBook = new Book(id, "Updated Pattern", "Updated Author", "Updated Description");
+
+        Mockito.when(bookRepository.findBookById(id)).thenReturn(existingBook);
+        Mockito.when(bookRepository.save(existingBook)).thenReturn(existingBook);
+
+        Book result = bookService.update(id, updatedBook);
+        assertNotNull(result);
+        assertEquals("Updated Pattern", result.getName());
+        assertEquals("Updated Author", result.getAuthor());
+        assertEquals("Updated Description", result.getDescription());
 
     }
 
     @Test
     public void deleteById() {
+        Long id = 1L;
 
+        Mockito.doNothing().when(bookRepository).deleteById(id);
+
+        bookService.deleteById(id);
     }
 }
