@@ -30,11 +30,11 @@ pipeline {
                 }
             }
         }
-        // stage('Archive Artifacts') {
-        //     steps {
-        //         archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
-        //     }
-        // }
+         stage('Archive Artifacts') {
+            steps {
+                 archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+             }
+         }
         stage('Deploy') {
             steps {
              deploy adapters: [tomcat9(credentialsId: '87807d89-b33d-4830-a63c-f71d4be61f08', path: '', url: 'http://localhost:8181')], contextPath: 'BookDemo', war: '**/*war'
