@@ -30,7 +30,7 @@ pipeline {
         }
          stage('Archive Artifacts') {
             steps {
-                 archiveArtifacts artifacts: 'build/lib/*.war', followSymlinks: false
+                 archiveArtifacts artifacts: '**/*.war', followSymlinks: false
              }
          }
         stage('Deploy') {
