@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              deploy adapters: [tomcat9(credentialsId: '50b85213-cbca-4fd5-bceb-6c0aa734ea8b', path: '', url: 'http://localhost:8181')], contextPath: 'Book demo', war: '**/*war'
+             deploy adapters: [tomcat9(credentialsId: '87807d89-b33d-4830-a63c-f71d4be61f08', path: '', url: 'http://localhost:8181')], contextPath: 'Book demo', war: '**/*war'
             }
         }
     }
