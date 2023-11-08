@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-    maven 'maven'
+    maven '3.9.5'
     }
     stages {
         stage('Checkout') {
@@ -24,7 +24,8 @@ pipeline {
        stage('Scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube13'){
-                    bat 'mvn org.sonar-source.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                    // bat 'mvn org.sonar-source.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                    bat 'mvn clean verify sonar:sonar'
                 }
             }
         }
