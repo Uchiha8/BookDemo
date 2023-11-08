@@ -17,14 +17,13 @@ pipeline {
         }
         stage('Code Coverage') {
             steps {
-                bat 'mvn clean test'  // Run tests to generate coverage data
+                bat 'mvn clean test'
                 bat 'mvn jacoco:report'
             }
         }
        stage('Scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube13'){
-                    // bat 'mvn org.sonar-source.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
                     bat 'mvn clean verify sonar:sonar'
                 }
             }
@@ -41,4 +40,3 @@ pipeline {
         }
     }
 }
-
