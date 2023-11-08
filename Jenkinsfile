@@ -23,7 +23,7 @@ pipeline {
        stage('Scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube13'){
-                    bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                    bat 'mvn org.sonar-source.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
                 }
             }
         }
