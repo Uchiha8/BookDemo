@@ -19,12 +19,12 @@ public class BookService {
     }
 
     public Book update(Long id, Book book) {
-        Book update_book = bookRepository.findBookById(id);
-        update_book.setName(book.getName());
-        update_book.setAuthor(book.getAuthor());
-        update_book.setDescription(book.getDescription());
-        bookRepository.save(update_book);
-        return update_book;
+        Book updateBook = bookRepository.findBookById(id);
+        updateBook.setName(book.getName());
+        updateBook.setAuthor(book.getAuthor());
+        updateBook.setDescription(book.getDescription());
+        bookRepository.save(updateBook);
+        return updateBook;
     }
 
     public Book getById(Long id) {
@@ -32,8 +32,7 @@ public class BookService {
     }
 
     public List<Book> getAll() {
-        List<Book> bookList = bookRepository.findAll();
-        return bookList;
+        return bookRepository.findAll();
     }
 
     public void deleteById(Long id) {

@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-public class BookControllerIT {
+class BookControllerIT {
 
     @Mock
     BookService bookService;
@@ -49,7 +49,7 @@ public class BookControllerIT {
     }
 
     @Test
-    public void getById() {
+    void getById() {
         Long id = 1L;
         Book book = new Book(id, "Design Pattern", "John Clim", "If you need to improve DP");
 
@@ -63,7 +63,7 @@ public class BookControllerIT {
     }
 
     @Test
-    public void save() {
+    void save() {
         Book bookToSave = new Book(1L, "Design Pattern", "John Clim", "If you need to improve DP");
 
         when(bookService.save(bookToSave)).thenReturn(bookToSave);
@@ -90,11 +90,11 @@ public class BookControllerIT {
     }
 
     @Test
-    public void deleteById() {
+    void deleteById() {
         Long id = 1L;
 
         doNothing().when(bookService).deleteById(id);
-
+        assertEquals(null, bookService.getById(id));
         bookController.delete(id);
     }
 }

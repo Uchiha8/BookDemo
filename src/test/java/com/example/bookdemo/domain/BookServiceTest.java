@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class BookServiceTest {
+class BookServiceTest {
 
     @InjectMocks
     BookService bookService;
@@ -27,7 +27,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void getAllTest() {
+    void getAllTest() {
         List<Book> bookList = new ArrayList<>();
         bookList.add(new Book(1L, "Design Pattern", "John Clim", "If you need to improve DP"));
         bookList.add(new Book(2L, "Spring Boot", "ALisher Usmonov", "If you need to improve Spring Book"));
@@ -43,7 +43,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void getById() {
+    void getById() {
         Long id = 1L;
         Book book = new Book(id, "Design Pattern", "John Clim", "If you need to improve DP");
 
@@ -59,7 +59,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void save() {
+    void save() {
         Book bookToSave = new Book(1L, "Design Pattern", "John Clim", "If you need to improve DP");
 
         Mockito.when(bookRepository.save(bookToSave)).thenReturn(bookToSave);
@@ -90,7 +90,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void deleteById() {
+    void deleteById() {
         Long id = 1L;
 
         Mockito.doNothing().when(bookRepository).deleteById(id);
