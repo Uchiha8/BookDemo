@@ -25,7 +25,7 @@ pipeline {
             steps {
                 withSonarQubeEnv(installationName: 'sonarqube13'){
                     // bat 'mvn org.sonar-source.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-                    bat 'mvn clean verify sonarqube13:sonar'
+                    bat 'mvn clean verify sonar:sonar'
                 }
             }
         }
