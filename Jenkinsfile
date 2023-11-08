@@ -17,7 +17,8 @@ pipeline {
         }
         stage('Code Coverage') {
             steps {
-                bat "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
+                bat 'mvn clean test'  // Run tests to generate coverage data
+                bat 'mvn jacoco:report'
             }
         }
        stage('Scan') {
@@ -29,7 +30,7 @@ pipeline {
         }
          stage('Archive Artifacts') {
             steps {
-                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+                 archiveArtifacts artifacts: '**/*.war', followSymlinks: false
              }
          }
         stage('Deploy') {
